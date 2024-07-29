@@ -1,3 +1,4 @@
+
 import Contact from "../Contact/Contact";
 // import css from '../FriendList/FriendList.module.css';
 
@@ -11,7 +12,7 @@ const ContactList = ({ contact }) => {
         <Contact
             key={id}
             name={name}
-            number = { number }
+            number={number}
             />
         ))}
       </>
