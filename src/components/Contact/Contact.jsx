@@ -5,11 +5,14 @@ import css from "./Contact.module.css";
 import { FaUser } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
 
-const Contact= ({key, name, number}) => {
+const Contact= ({id, name, number, onDelete}) => {
   return (
       <div className={css.contact}>
       <p > < FaUser />  {name}</p>
-      <p > <BsFillTelephoneFill/>  {number}</p>
+      <p > <BsFillTelephoneFill />  {number}</p>
+        <button onClick={() => onDelete(id)}>
+        Delete
+      </button>
     </div>
   );
 };

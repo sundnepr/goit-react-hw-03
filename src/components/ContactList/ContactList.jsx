@@ -2,7 +2,7 @@
 import Contact from "../Contact/Contact";
 // import css from '../FriendList/FriendList.module.css';
 
-const ContactList = ({ contact }) => {
+const ContactList = ({ contact, onDelete }) => {
 
     return (
      
@@ -10,9 +10,10 @@ const ContactList = ({ contact }) => {
       <>
         {contact.map(({ id, name, number}) => (
         <Contact
-            key={id}
+            id={id}
             name={name}
             number={number}
+            onDelete={onDelete}
             />
         ))}
       </>
