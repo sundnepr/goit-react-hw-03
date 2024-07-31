@@ -7,9 +7,11 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 
 const Contact= ({id, name, number, onDelete}) => {
   return (
-      <div className={css.contact}>
-      <p > < FaUser />  {name}</p>
+    <div className={css.contact}>
+      <div className={css.contactText}>
+        <p > < FaUser />  {name}</p>
       <p > <BsFillTelephoneFill />  {number}</p>
+      </div>
         <button onClick={() => onDelete(id)}>
         Delete
       </button>

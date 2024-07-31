@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.filed {
+  margin: 10px;
+  padding: auto;
+}
+
+.error {
+  color: red;
+}
