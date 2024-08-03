@@ -7,7 +7,7 @@ const ContactList = ({ contact, onDelete }) => {
     return (
      
     <ul>
-      <>
+      
         {contact.map(({ id, name, number}) => (
         <Contact
             id={id}
@@ -16,7 +16,7 @@ const ContactList = ({ contact, onDelete }) => {
             onDelete={onDelete}
             />
         ))}
-      </>
+      
     </ul>
   );
 };

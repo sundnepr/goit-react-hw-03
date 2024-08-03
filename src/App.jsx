@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm.jsx";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
@@ -7,7 +7,10 @@ import inContact from "./contact.json"
 import { nanoid } from "nanoid";
 
 function App() {
-  const [contact, setContact] = useState(inContact);
+  const savedStan = JSON.parse(window.localStorage.getItem("saved-stan"));
+  const [contact, setContact] = useState(() =>{
+    return savedStan !== null ? savedStan : inContact;
+  });
   const [searchbox, setSearchBox] = useState("");
 
   const visibleContact = contact.filter((contact) =>
@@ -15,6 +18,10 @@ function App() {
   );
 
   // const [contactForm, setContactForm] = useState();
+
+  useEffect(() => {
+    window.localStorage.setItem("saved-stan", JSON.stringify(contact));
+  }, [contact]);
   
   const deleteContact = (contactId) => {
     setContact((prevContact) => {

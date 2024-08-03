@@ -8,7 +8,7 @@ import { nanoid } from "nanoid";
 // const phoneRegExp =  
 const ContactFormSchema = Yup.object().shape({
     name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
-    number: Yup.string().required("Required"),
+    number: Yup.string().matches(/^[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/, "Номер телефону має співпадати з форматом 'xxx-xxx-xx-xx'").required("Required"),
 });
 
 
@@ -42,10 +42,10 @@ const ContactForm = ({onAddContact} ) => {
           <Form className={css.form}>
                <label className={css.label} htmlFor={nameFieldId}>Name</label>
               <Field className={css.field} type="text" name="name" id={nameFieldId} />
-              <ErrorMessage className={css.error} name="name" component="span" />
+              <ErrorMessage className={css.errorText} name="name" component="span" />
               <label className={css.label} htmlFor={numberFieldId}>Number</label>
               <Field className={css.field} type="tel" name="number" id={numberFieldId} />
-              <ErrorMessage className={css.error} name="number" component="span" />
+              <ErrorMessage className={css.errorText} name="number" component="span" />
         <button className={css.submitBtn} type="submit">Add contact</button>
       </Form>
      

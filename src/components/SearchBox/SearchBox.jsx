@@ -1,10 +1,10 @@
-// import { useState } from 'react'
+import css from './SearchBox.module.css'
 
 const SearchBox = ({ value, onsearchbox }) => {
   return (
       <div>
           <p >Find contact by name</p>
-      <input
+      <input className="css.search"
         type="text"
         value={value}
         onChange={(e) => onsearchbox(e.target.value)}
