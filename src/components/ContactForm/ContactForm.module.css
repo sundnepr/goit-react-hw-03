@@ -1,16 +1,40 @@
 .form {
-  display: flex;
-  flex-wrap: wrap;
   border: 1px solid black;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.filed {
-  margin: 10px;
-  padding: auto;
+  padding: 20px;
 }
 
-.error {
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.checkboxLabel {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.statusWrapper {
+  display: flex;
+  align-items: center;
+}
+.submitBtn {
+  border: none;
+  margin: 0 auto;
+  padding: 10px 20px;
+  min-width: 140px;
+  border-radius: 15px;
+  background-color: #aeaeae;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.errorText {
+  font-size: 14px;
   color: red;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px;
 }

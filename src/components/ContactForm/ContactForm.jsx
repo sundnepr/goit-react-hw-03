@@ -3,7 +3,9 @@ import { Formik, Form, Field } from "formik";
 import css from "./ContactForm.module.css";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
+import { nanoid } from "nanoid";
 
+// const phoneRegExp =  
 const ContactFormSchema = Yup.object().shape({
     name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
     number: Yup.string().required("Required"),
@@ -15,29 +17,36 @@ const initialValues = {
         number: ""
 };
 
-const ContactForm = () => {
-    const nameFieldId = useId();
+const ContactForm = ({onAddContact} ) => {
+  const nameFieldId = useId();
   const numberFieldId = useId();
 
-    const handleSubmit = (values, actions) => {
+  const handleSubmit = (values, {resetForm}) => {
 		console.log(values);
-		actions.resetForm();
+    const newContact= {
+      name: values.name,
+      number: values.number,
+      id: nanoid()
+    }
+    onAddContact(newContact);
+    // console.log(actions);
+		resetForm();
 	};
 
   return (
     <Formik
-      initialValues={{initialValues}}
+      initialValues={initialValues}
           onSubmit={ handleSubmit }
           validationSchema={ContactFormSchema}
     >
           <Form className={css.form}>
-               <label htmlFor={nameFieldId}>Name</label>
+               <label className={css.label} htmlFor={nameFieldId}>Name</label>
               <Field className={css.field} type="text" name="name" id={nameFieldId} />
               <ErrorMessage className={css.error} name="name" component="span" />
-              <label htmlFor={numberFieldId}>Number</label>
-              <Field className={css.field} type="phone" name="number" id={numberFieldId} />
+              <label className={css.label} htmlFor={numberFieldId}>Number</label>
+              <Field className={css.field} type="tel" name="number" id={numberFieldId} />
               <ErrorMessage className={css.error} name="number" component="span" />
-        <button type="submit">Add contact</button>
+        <button className={css.submitBtn} type="submit">Add contact</button>
       </Form>
      
     </Formik>
